@@ -157,11 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
             periodo: document.getElementById('periodo').value
         };
 
-        fetch('/api/agendamentos', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(agendamento)
-        })
+        
         .then(response => {
             if (!response.ok) {
                 return response.json().then(err => { throw new Error(err.message); });
