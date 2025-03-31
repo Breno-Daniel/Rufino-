@@ -1,0 +1,678 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #4CAF50;
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #1A3C34;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: none;
+    outline: none;
+}
+
+h1 {
+    color: #FFFFFF;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+#header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#header-right span {
+    color: #FFFFFF;
+    font-size: 14px;
+} 
+
+.Fazer-agent {
+    color: #ffffff;
+    font-size: 1.4em;
+    margin: 14px 0;
+    background-color: #258028;
+    border-radius: 10px 0 10px 0;
+    padding: 4px;
+    box-shadow: 10px 4px 0px #45A049;
+}
+
+h2 {
+    color: #116624;
+    font-size: 1.4em;
+    margin: 20px 0;
+}
+
+/* Layout em colunas */
+.main-container {
+    display: flex;
+    margin-top: 100px;
+    padding: 20px;
+    gap: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.calendar-section {
+    width: 60%;
+}
+
+.form-section {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+#calendar-left-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.button-group, .button-group-mobile {
+    display: flex;
+    gap: 10px;
+}
+
+#monthSelect {
+    padding: 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #1A3C34;
+    display: none;
+}
+
+#toggleCalendarBtn, #visualizarBtn, #toggleCalendarBtnMobile, #visualizarBtnMobile {
+    background-color: #1A3C34;
+    color: #FFFFFF;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#toggleCalendarBtn:hover, #visualizarBtn:hover, #toggleCalendarBtnMobile:hover, #visualizarBtnMobile:hover {
+    background-color: #2A5A4E;
+    transform: scale(1.02);
+}
+
+/* Estilo para botões desativados */
+#toggleCalendarBtn:disabled, #visualizarBtn:disabled, #toggleCalendarBtnMobile:disabled, #visualizarBtnMobile:disabled {
+    background-color: #B0B0B0;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+#toggleCalendarBtnMobile, #visualizarBtnMobile {
+    display: none;
+}
+
+#calendar {
+    background-color: #FFFFFF;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustes no calendário */
+.fc-daygrid-day {
+    height: 120px !important;
+}
+
+.fc-daygrid-day-frame {
+    padding: 5px;
+}
+
+.fc-daygrid-day-top {
+    font-size: 14px;
+    color: #1A3C34;
+}
+
+.fc-daygrid-event {
+    font-size: 12px;
+    padding: 4px;
+    white-space: normal !important;
+    line-height: 1.3;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Estilo da legenda */
+#legend {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 8px;
+    gap: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.legend-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1A3C34;
+}
+
+#legendList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+}
+
+#legendList li {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    padding: 8px 16px;
+}
+
+#legendList li::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    border-radius: 3px;
+    background-color: var(--legend-color);
+}
+
+/* Estilo dos formulários */
+.form-container {
+    position: relative;
+    max-width: 300px;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #f44336;
+}
+
+form {
+    margin: 0;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+label {
+    display: block;
+    margin: 10px 0 3px;
+    text-align: left;
+    color: #1A3C34;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+input, select {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    margin: 3px 0 8px;
+    border: none;
+    border-bottom: 2px solid #E0E0E0;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+    background: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+input:focus, select:focus {
+    border-bottom: 2px solid #4CAF50;
+    box-shadow: inset 0 -2px 6px rgba(76, 175, 80, 0.2);
+    outline: none;
+}
+
+button {
+    background-color: #2c662e;
+    color: #FFFFFF;
+    padding: 8px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #45A049;
+    transform: scale(1.02);
+}
+
+/* Botão "Agendar" com o mesmo tamanho dos inputs */
+#agendamentoForm button {
+    width: 100%;
+    margin-top: 15px;
+    position: static;
+}
+
+#loginBtn {
+    background-color: #FFFFFF;
+    color: #1A3C34;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid #FFFFFF;
+    width: auto;
+    border-radius: 5px;
+    position: static;
+}
+
+#loginBtn:hover {
+    background-color: #F4F7FA;
+    transform: scale(1.02);
+}
+
+#logoutBtn {
+    background-color: #FFFFFF;
+    color: #1A3C34;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid #FFFFFF;
+    width: auto;
+    border-radius: 5px;
+    position: static;
+}
+
+#logoutBtn:hover {
+    background-color: #F4F7FA;
+    transform: scale(1.02);
+}
+
+#loginSection {
+    max-width: 300px;
+    margin: 80px auto 20px;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+/* Botão "Entrar" no login */
+#loginForm button {
+    width: 100%;
+    margin-top: 15px;
+    position: static;
+}
+
+/* Estilo da lista de agendamentos */
+#agendamentosTable {
+    background-color: #FFFFFF;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+#agendamentosTable h2 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #1A3C34;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #F9F9F9;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+th {
+    background-color: #1A3C34;
+    color: #FFFFFF;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+td {
+    color: #333;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: #E8F0FE;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: #FFFFFF;
+    padding: 6px 12px;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    #logo {
+        margin-bottom: 10px;
+    }
+
+    #header-right {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .main-container {
+        flex-direction: column;
+        margin-top: 120px;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .calendar-section, .form-section {
+        width: 100%;
+    }
+
+    #calendar-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #calendar-left-controls {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .button-group {
+        display: none;
+    }
+
+    .button-group-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    #monthSelect {
+        width: 100%;
+    }
+
+    #toggleCalendarBtnMobile, #visualizarBtnMobile {
+        display: block;
+        width: 100%;
+    }
+
+    #legend {
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .legend-title {
+        font-size: 12px;
+    }
+
+    #legendList {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    #legendList li {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    #legendList li::before {
+        width: 12px;
+        height: 12px;
+    }
+
+    #calendar {
+        padding: 10px;
+    }
+
+    .fc-daygrid-day {
+        height: auto !important;
+    }
+
+    .fc-daygrid-day-frame {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .fc-daygrid-day-top {
+        font-size: 12px;
+        color: #000;
+    }
+
+    .fc-daygrid-event {
+        font-size: 10px;
+        white-space: normal !important;
+        padding: 2px;
+    }
+
+    .form-container, #loginSection, #agendamentosTable {
+        max-width: 100%;
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    input, select {
+        padding: 8px 0;
+        border-bottom: 1.5px solid #E0E0E0;
+        box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    input:focus, select:focus {
+        border-bottom: 1.5px solid #4CAF50;
+        box-shadow: inset 0 -2px 4px rgba(76, 175, 80, 0.2);
+    }
+
+    h1 {
+        font-size: 1.3em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .delete-btn {
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    #logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    h1 {
+        font-size: 1.1em;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    #legend {
+        display: flex;
+        align-items: center;
+    }
+
+    .legend-title {
+        font-size: 10px;
+    }
+
+    #legendList li {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+
+    #legendList li::before {
+        width: 10px;
+        height: 10px;
+    }
+
+    #calendar {
+        font-size: 12px;
+        max-width: 100%;
+        overflow-x: auto;
+        min-width: 300px;
+    }
+
+    .fc-toolbar {
+        flex-wrap: wrap;
+        font-size: 10px;
+    }
+
+    .fc-daygrid-day {
+        height: auto !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .fc-daygrid-day-top {
+        font-size: 12px;
+        color: #000;
+    }
+
+    .fc-daygrid-event {
+        font-size: 10px;
+        padding: 2px;
+        white-space: normal !important;
+    }
+
+    .fc-daygrid-more-link {
+        font-size: 10px;
+    }
+
+    .fc-timegrid-slot, .fc-daygrid-day-frame {
+        min-width: 60px;
+    }
+
+    .fc-scroller {
+        overflow-x: auto !important;
+    }
+
+    label {
+        font-size: 10px;
+    }
+
+    input, select {
+        padding: 6px 0;
+        border-bottom: 1px solid #E0E0E0;
+        box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    input:focus, select:focus {
+        border-bottom: 1px solid #4CAF50;
+        box-shadow: inset 0 -2px 3px rgba(76, 175, 80, 0.2);
+    }
+
+    #toggleCalendarBtnMobile, #visualizarBtnMobile {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

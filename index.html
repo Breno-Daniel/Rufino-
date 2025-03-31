@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Espaços - Escola Cel Rufino</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo-cel-rufino.png" alt="Logo da Escola Cel Rufino" id="logo">
+        <h1>Agendamento Cel Rufino 2025</h1>
+        <div id="header-right">
+            <span>E.E. Cel. Pedro José Rufino - Jardim, MS</span>
+            <button id="loginBtn">Login Admin</button>
+            <button id="logoutBtn" style="display: none;">Sair</button>
+        </div>
+    </header>
+    <div id="loginSection" style="display: none;">
+        <div class="form-container">
+            <span class="close-btn">x</span>
+            <h2>Login do Administrador</h2>
+            <form id="loginForm">
+                <label for="adminUser">Usuário</label><br>
+                <input type="text" id="adminUser" required><br>
+                <label for="adminPass">Senha</label><br>
+                <input type="password" id="adminPass" required><br>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="calendar-section">
+            <div id="calendar-controls">
+                <div id="calendar-left-controls">
+                    <select id="monthSelect"></select>
+                    <div class="button-group">
+                        <button id="toggleCalendarBtn" class="desktop-toggle">Mostrar Calendário</button>
+                        <button id="visualizarBtn">Visualizar Agendamentos</button>
+                    </div>
+                </div>
+                <div id="legend">
+                    <span class="legend-title">Legenda</span>
+                    <ul id="legendList"></ul> 
+                </div>
+            </div>
+            <div id="calendar"></div>
+            <div class="button-group-mobile">
+                <button id="toggleCalendarBtnMobile" class="mobile-toggle">Mostrar Calendário</button>
+                <button id="visualizarBtnMobile">Visualizar Agendamentos</button>
+            </div>
+            <div id="agendamentosTable" style="display: none;">
+                <h2>Lista de Agendamentos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Disciplina</th>
+                            <th>Turma</th>
+                            <th>Recurso</th>
+                            <th>Data</th>
+                            <th>Período</th>
+                            <th>Horário</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agendamentosBody"></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="form-section">
+            <h2 class="Fazer-agent">Fazer Agendamento</h2>
+            <div class="form-container">
+                <span class="close-btn">×</span>
+                <form id="agendamentoForm">
+                    <label for="nome">Nome do Professor</label>
+                    <input type="text" id="nome" required>
+                    <label for="disciplina">Disciplina</label>
+                    <input type="text" id="disciplina" required>
+                    <label for="turma">Turma</label>
+                    <input type="text" id="turma" required>
+                    <label for="recurso">Espaço/Recurso</label>
+                    <select id="recurso" required>
+                        <option value="" disabled selected>Selecione um recurso</option>
+                        <option value="Sala de Tecnologia Educacional (STE)">Sala de Tecnologia Educacional (STE)</option>
+                        <option value="Sala de Vídeo + Televisão">Sala de Vídeo + Televisão</option>
+                        <option value="Sala de Vídeo">Sala de Vídeo</option>
+                        <option value="Laboratório de Ciências">Laboratório de Ciências</option>
+                        <option value="Sala de Artes">Sala de Artes</option>
+                        <option value="Projetor 01">Projetor 01</option>
+                        <option value="Projetor 02">Projetor 02</option>
+                        <option value="Caixa de Som 01">Caixa de Som 01</option>
+                        <option value="Caixa de Som 02">Caixa de Som 02</option>
+                        <option value="Projetor + Caixa de Som">Projetor + Caixa de Som</option>
+                        <option value="Caixa de Som + Microfone">Caixa de Som + Microfone</option>
+                        <option value="Laboratório Didático Móvel (LDM)">Laboratório Didático Móvel (LDM)</option>
+                        <option value="Kit Robótica">Kit Robótica</option>
+                        <option value="Câmera Digital">Câmera Digital</option>
+                    </select>
+                    <label for="data">Data</label>
+                    <input type="date" id="data" required>
+                    <label for="periodo">Período</label>
+                    <select id="periodo" required>
+                        <option value="" disabled selected>Selecione um período</option>
+                        <option value="Matutino">Matutino</option>
+                        <option value="Vespertino">Vespertino</option>
+                        <option value="Noturno">Noturno</option>
+                    </select>
+                    <label for="horario">Horário</label>
+                    <select id="horario" required>
+                        <option value="" disabled selected>Selecione um horário</option>
+                        <!-- Opções serão preenchidas dinamicamente -->
+                    </select>
+                    <button type="submit">Agendar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/pt-br.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
